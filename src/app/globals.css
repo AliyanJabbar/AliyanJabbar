@@ -65,3 +65,11 @@ body {
 }
 
 
+
+
+.tilted-card-caption{
+  padding: 5px;
+  font-size: 0.875rem;
+  background-color: white;
+  color: black;
+}

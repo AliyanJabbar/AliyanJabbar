@@ -34,12 +34,12 @@ export default function ParticlesLayout() {
         particleCount={200}
         particleSpread={5}
         speed={0.1}
-        moveParticlesOnHover={!isMobile}
+        moveParticlesOnHover={true}
         particleHoverFactor={isMobile ? 1 : 2}
         alphaParticles={false}
         particleBaseSize={isMobile ? 2 : 3}
         sizeRandomness={1}
-        disableRotation={isMobile}
+        disableRotation={false}
       />
     </div>
   );

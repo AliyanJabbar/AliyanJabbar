@@ -51,7 +51,7 @@ const ReactParticlesBg = ({
       particleColors ||
         (currentTheme === "dark"
           ? ["#ffffff", "#58E6D9"]
-          : ["#000000", "#B63E96"])
+          : ["#000000", "#EC407A"])
     );
 
     setActualBackgroundColor(

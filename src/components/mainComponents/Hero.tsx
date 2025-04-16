@@ -45,8 +45,8 @@ export default function Hero() {
                     />
                   ) : (
                     <MetaBalls
-                      color="#B63E96"
-                      cursorBallColor="#E9B9DB"
+                      color="#EC407A"                      
+                      cursorBallColor="#F48FB1"
                       cursorBallSize={2}
                       ballCount={10}
                       animationSize={18}
@@ -62,11 +62,11 @@ export default function Hero() {
 
               {/* Optional: Add a subtle overlay text or icon in the center */}
               <div className="absolute z-10 text-center opacity-80 dark:opacity-90 pointer-events-none">
-                <div className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r dark:from-primaryDark dark:to-teal-300 from-primary to-red-500">
+                <div className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r dark:from-primaryDark dark:to-teal-300 from-primary to-rose-500">
                   AJ
                 </div>
                 <div className="text-sm mt-2 dark:text-primaryDark text-primary">
-                  Full Stack Developer
+                  Website Developer
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@ export default function Hero() {
               className="!text-6xl !text-left xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-4xl xs:!text-3xl"
             />
             <p className="my-4 text-base font-medium lg:text-center text-left dark:text-light text-dark sm:leading-tight">
-              As a passionate full-stack developer, I bring ideas to life
+              As a passionate UI/UX | Next.js developer, I bring ideas to life
               through cutting-edge web applications. Discover my latest projects
               and insights, highlighting my expertise in React.js and modern web
               development.
