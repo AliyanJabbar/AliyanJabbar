@@ -161,7 +161,7 @@ export default function Projects() {
                 github="https://github.com/AliyanJabbar/Hackathon-Food-Chukh"
                 link="https://hackathon-ui-ux-nine.vercel.app/"
                 img={{
-                  path: "/assets/projects/food_Chukh.png",
+                  path: "/assets/projects/Food_Chukh.png",
                   width: 470,
                   height: 270,
                 }}
