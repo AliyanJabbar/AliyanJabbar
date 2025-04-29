@@ -1,25 +1,27 @@
 //  particles parallax
-"use client";
-import { useEffect, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import type { Engine } from "@tsparticles/engine";
-import { loadSlim } from "@tsparticles/slim";
-import { useTheme } from "next-themes";
+"use client"
+import { useEffect, useState } from "react"
+import Particles, { initParticlesEngine } from "@tsparticles/react"
+import type { Engine } from "@tsparticles/engine"
+import { loadSlim } from "@tsparticles/slim"
+import { useTheme } from "next-themes"
 
 interface ReactParticlesBgProps {
-  particleCount?: number;
-  particleSpread?: number;
-  speed?: number;
-  particleColors?: string[];
-  moveParticlesOnHover?: boolean;
-  particleHoverFactor?: number;
-  alphaParticles?: boolean;
-  particleBaseSize?: number;
-  sizeRandomness?: number;
-  cameraDistance?: number;
-  disableRotation?: boolean;
-  backgroundColor?: string;
-  className?: string;
+  particleCount?: number
+  particleSpread?: number
+  speed?: number
+  particleColors?: string[]
+  moveParticlesOnHover?: boolean
+  particleHoverFactor?: number
+  parallaxStrength?: number
+  parallaxSmoothing?: number
+  alphaParticles?: boolean
+  particleBaseSize?: number
+  sizeRandomness?: number
+  cameraDistance?: number
+  disableRotation?: boolean
+  backgroundColor?: string
+  className?: string
 }
 
 const ReactParticlesBg = ({
@@ -27,8 +29,10 @@ const ReactParticlesBg = ({
   particleSpread = 10,
   speed = 0.1,
   particleColors,
-  moveParticlesOnHover = false,
-  particleHoverFactor = 1,
+  moveParticlesOnHover = true,
+  particleHoverFactor = 2,
+  parallaxStrength = 20,
+  parallaxSmoothing = 10,
   alphaParticles = false,
   particleBaseSize = 5,
   sizeRandomness = 1,
@@ -36,54 +40,50 @@ const ReactParticlesBg = ({
   backgroundColor,
   className,
 }: ReactParticlesBgProps) => {
-  const { theme, resolvedTheme } = useTheme();
-  const currentTheme = resolvedTheme || theme;
+  const { theme, resolvedTheme } = useTheme()
+  const currentTheme = resolvedTheme || theme
 
-  const [actualParticleColors, setActualParticleColors] = useState<string[]>(
-    []
-  );
-  const [actualBackgroundColor, setActualBackgroundColor] = useState("");
-  const [init, setInit] = useState(false);
+  const [actualParticleColors, setActualParticleColors] = useState<string[]>([])
+  const [actualBackgroundColor, setActualBackgroundColor] = useState("")
+  const [init, setInit] = useState(false)
 
   // Update colors based on theme
   useEffect(() => {
     setActualParticleColors(
-      particleColors ||
-        (currentTheme === "dark"
-          ? ["#ffffff", "#58E6D9"]
-          : ["#000000", "#EC407A"])
-    );
+      particleColors || (currentTheme === "dark" ? ["#ffffff", "#58E6D9"] : ["#000000", "#EC407A"]),
+    )
 
-    setActualBackgroundColor(
-      backgroundColor || (currentTheme === "dark" ? "#1b1b1b" : "#f5f5f5")
-    );
-  }, [currentTheme, backgroundColor, particleColors]);
+    setActualBackgroundColor(backgroundColor || (currentTheme === "dark" ? "#1b1b1b" : "#f5f5f5"))
+  }, [currentTheme, backgroundColor, particleColors])
 
   useEffect(() => {
     initParticlesEngine(async (engine: Engine) => {
-      await loadSlim(engine);
+      await loadSlim(engine)
     }).then(() => {
-      setInit(true);
-    });
-  }, []);
+      setInit(true)
+    })
+  }, [])
 
-  const minSize = particleBaseSize * (1 - sizeRandomness * 0.5);
-  const maxSize = particleBaseSize * (1 + sizeRandomness * 0.5);
+  const minSize = particleBaseSize * (1 - sizeRandomness * 0.5)
+  const maxSize = particleBaseSize * (1 + sizeRandomness * 0.5)
 
   return (
-    <div className={className}>
+    <div className={`absolute inset-0 -z-10 w-full h-full ${className || ""}`}>
       {init && (
         <Particles
           key={`particles-${currentTheme || "initial"}`} // Re-render on theme change
           id="tsparticles"
           className="particles-container"
           options={{
+            fullScreen: {
+              enable: false,
+            },
             background: {
               color: {
                 value: actualBackgroundColor,
               },
             },
-            fpsLimit: 60,
+            fpsLimit: 120,
             particles: {
               number: {
                 value: particleCount,
@@ -176,9 +176,12 @@ const ReactParticlesBg = ({
                   mode: "attract",
                   parallax: {
                     enable: moveParticlesOnHover,
-                    force: particleHoverFactor * 20,
-                    smooth: 10,
+                    force: parallaxStrength,
+                    smooth: parallaxSmoothing,
                   },
+                },
+                onClick: {
+                  enable: false, // Disable click interactions
                 },
                 resize: {
                   enable: true,
@@ -193,35 +196,6 @@ const ReactParticlesBg = ({
                   factor: particleHoverFactor * 5,
                   maxSpeed: 50,
                   speed: 1,
-                },
-                slow: {
-                  factor: 3,
-                  radius: 200,
-                },
-                trail: {
-                  delay: 0.005,
-                  pauseOnStop: true,
-                  quantity: 5,
-                  particles: {
-                    color: {
-                      value: actualParticleColors,
-                    },
-                    collisions: {
-                      enable: false,
-                    },
-                    links: {
-                      enable: false,
-                    },
-                    move: {
-                      outModes: {
-                        default: "destroy",
-                      },
-                      speed: 2,
-                    },
-                    size: {
-                      value: { min: minSize / 2, max: maxSize / 2 },
-                    },
-                  },
                 },
               },
             },
@@ -264,6 +238,6 @@ const ReactParticlesBg = ({
         />
       )}
     </div>
-  );
-};
-export default ReactParticlesBg;
+  )
+}
+export default ReactParticlesBg
