@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import TiltedCard from "../../components/TiltedCard";
+import TiltedCard from "../../components/ui/TiltedCard";
 import Layout from "@/components/mainComponents/layout";
-import AnimatedText from "@/components/AnimatedText";
+import AnimatedText from "@/components/ui/AnimatedText";
 import Link from "next/link";
-import { GithubIcon } from "@/components/icons";
-import Button from "@/components/Button";
+import { GithubIcon } from "@/components/ui/icons";
+import Button from "@/components/ui/Button";
 
 const FeaturedProject = ({
   type,

@@ -1,10 +1,10 @@
 "use client";
 import Layout from "./layout";
-import AnimatedText from "../AnimatedText";
-import Button from "../Button";
+import AnimatedText from "../ui/AnimatedText";
+import Button from "../ui/Button";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import MetaBalls from "../MetaBalls";
+import MetaBalls from "../ui/MetaBalls";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import Link from "next/link";

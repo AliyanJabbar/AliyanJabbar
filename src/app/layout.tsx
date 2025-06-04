@@ -1,5 +1,5 @@
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { Montserrat } from "next/font/google";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
+import { Montserrat, Monsieur_La_Doulaise } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
 import dynamic from "next/dynamic";
@@ -11,6 +11,13 @@ export const metadata = {
   title: "Aliyan Jabbar",
   description: "Aliyan Jabbar Portfolio",
 };
+
+// Fonts
+const sub_font = Monsieur_La_Doulaise({
+  subsets: ["latin-ext"],
+  weight: "400",
+  variable: "--font-corinthia",
+});
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -24,7 +31,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${montserrat.className} select-none scroll-smooth`}>
+      <body
+        className={`${montserrat.className} ${sub_font.variable} select-none scroll-smooth`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

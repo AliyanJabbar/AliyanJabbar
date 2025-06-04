@@ -12,6 +12,7 @@ export default {
     extend: {
       fontFamily: {
         mont: ["var(--font-mont)", ...fontFamily.sans],
+        sub_font: ["var(--font-corinthia)", ...fontFamily.serif],
       },
       colors: {
         dark: "#1b1b1b", //blackish
@@ -27,6 +28,9 @@ export default {
 
       xl: { max: "1279px" },
       // => @media (max-width: 1279px) { ... }
+
+      ".5xl": { max: "1100px" },
+      // => @media (max-width: 1150px) { ... }
 
       lg: { max: "1023px" },
       // => @media (max-width: 1023px) { ... }

@@ -1,13 +1,15 @@
 "use client";
 import "./globals.css";
 import Header from "@/components/mainComponents/header";
-import ClickSpark from "../components/ClickSpark";
+import ClickSpark from "../components/ui/ClickSpark";
 import Footer from "@/components/mainComponents/Footer";
 import { useEffect, useState, useRef } from "react";
 import Loading from "./loading";
 import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
-import TransitionEffect from "@/components/Transition";
+import TransitionEffect from "@/components/ui/Transition";
+import ScrollToTop from "@/components/mainComponents/ScrollToTop";
+import Lenis from "lenis";
 
 export default function ClientLayout({
   children,
@@ -25,6 +27,11 @@ export default function ClientLayout({
 
   // Only run on client side
   useEffect(() => {
+    // Initialize Lenis for better scroll
+    new Lenis({
+      autoRaf: true,
+    });
+
     // Set mounted immediately
     setMounted(true);
 
@@ -67,7 +74,8 @@ export default function ClientLayout({
       "fixed inset-0 w-screen h-full z-[9999999] dark:bg-primaryDark bg-primary";
     exitAnimation.style.transform = "scaleX(0)";
     exitAnimation.style.transformOrigin = "left";
-    exitAnimation.style.transition = "transform 1s cubic-bezier(0.65, 0, 0.35, 1)";
+    exitAnimation.style.transition =
+      "transform 1s cubic-bezier(0.65, 0, 0.35, 1)";
     document.body.appendChild(exitAnimation);
 
     // Start exit animation
@@ -79,21 +87,20 @@ export default function ClientLayout({
     setTimeout(() => {
       // First, trigger entry animation
       setShowEntryTransition(true);
-      
+
       // Then immediately change route (1ms delay to ensure entry animation starts first)
       setTimeout(() => {
         router.push(path);
-        
+
         // Remove exit animation element
         document.body.removeChild(exitAnimation);
-        
+
         // Reset states after entry animation completes
         setTimeout(() => {
           setIsTransitioning(false);
           setShowEntryTransition(false);
         }, 1200); // Match with TransitionEffect duration
       }, 1);
-      
     }, 950); // Wait until exit animation is fully complete
   };
 
@@ -105,7 +112,7 @@ export default function ClientLayout({
       {!mounted ? (
         <Loading />
       ) : (
-        <div className="font-mont bg-transparent w-full min-h-screen flex flex-col overflow-x-hidden">
+        <div className="font-mont bg-transparent w-full min-h-screen scroll-smooth flex flex-col overflow-x-hidden">
           <ClickSpark
             sparkSize={isMobile ? 8 : 10}
             sparkRadius={isMobile ? 12 : 15}
@@ -113,7 +120,8 @@ export default function ClientLayout({
             duration={400}
           >
             <Header onRouteChange={handleRouteChange} />
-            <main className="flex-grow pt-28 px-4 sm:px-6 md:px-8">
+            <ScrollToTop />
+            <main className="flex-grow pt-28 px-4 sm:px-6 md:px-8 ">
               <AnimatePresence mode="wait">{children}</AnimatePresence>
             </main>
             <Footer />

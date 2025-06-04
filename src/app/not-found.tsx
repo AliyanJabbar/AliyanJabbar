@@ -1,6 +1,6 @@
 "use client";
-import Button from "@/components/Button";
-import FallingText from "@/components/FallingText";
+import Button from "@/components/ui/Button";
+import FallingText from "@/components/ui/FallingText";
 
 export default function NotFound() {
   return (

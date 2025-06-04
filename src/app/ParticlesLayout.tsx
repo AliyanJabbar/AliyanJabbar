@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import ReactParticlesBg from "../components/ReactParticlesBg";
+import ReactParticlesBg from "../components/ui/ReactParticlesBg";
 
 export default function ParticlesLayout() {
   const [isMobile, setIsMobile] = useState(false);

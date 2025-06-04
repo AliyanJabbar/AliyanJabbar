@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import Logo from "../logo";
+import Logo from "../ui/logo";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { createPortal } from "react-dom";
@@ -13,7 +13,7 @@ import {
   SunIcon,
   WIcon,
   XIcon,
-} from "../icons";
+} from "../ui/icons";
 
 // Define the props interface
 interface HeaderProps {
@@ -126,7 +126,7 @@ const Header = ({ onRouteChange }: HeaderProps = {}) => {
           {/* whatsapp icon */}
           <WIcon link="https://wa.me/923199289177" />
           {/* x icon */}
-          <XIcon link="/" />
+          <XIcon link="https://x.com/aliyanjabbar_ai" />
           {/* github icon */}
           <GithubIcon link="https://github.com/AliyanJabbar" />
           {/* linkedin icon */}
@@ -218,7 +218,7 @@ const Header = ({ onRouteChange }: HeaderProps = {}) => {
                 {/* whatsapp icon */}
                 <WIcon link="https://wa.me/923199289177" />
                 {/* x icon */}
-                <XIcon link="/" />
+                <XIcon link="https://x.com/aliyanjabbar_ai" />
                 {/* github icon */}
                 <GithubIcon link="https://github.com/AliyanJabbar" />
                 {/* linkedin icon */}

@@ -1,5 +1,5 @@
 import React from "react";
-import CircularText from "../CircularText";
+import CircularText from "../ui/CircularText";
 import Link from "next/link";
 
 const HireMe = () => {
