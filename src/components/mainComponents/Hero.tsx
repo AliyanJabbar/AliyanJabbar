@@ -45,7 +45,7 @@ export default function Hero() {
                     />
                   ) : (
                     <MetaBalls
-                      color="#EC407A"                      
+                      color="#EC407A"
                       cursorBallColor="#F48FB1"
                       cursorBallSize={2}
                       ballCount={10}
@@ -62,7 +62,7 @@ export default function Hero() {
 
               {/* Optional: Add a subtle overlay text or icon in the center */}
               <div className="absolute z-10 text-center opacity-80 dark:opacity-90 pointer-events-none">
-                <div className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r dark:from-primaryDark dark:to-teal-300 from-primary to-rose-500">
+                <div className="text-4xl font-bold dark:text-teal-300  text-rose-500">
                   AJ
                 </div>
                 <div className="text-sm mt-2 dark:text-primaryDark text-primary">

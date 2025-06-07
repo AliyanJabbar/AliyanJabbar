@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/mainComponents/header";
 import ClickSpark from "../components/ui/ClickSpark";
 import Footer from "@/components/mainComponents/Footer";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import Loading from "./loading";
 import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
@@ -16,118 +16,133 @@ export default function ClientLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // for hydration
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showEntryTransition, setShowEntryTransition] = useState(false);
+
   const isFirstMount = useRef(true);
+  const lenisRef = useRef<Lenis | null>(null);
   const pathname = usePathname();
   const router = useRouter();
 
-  // Only run on client side
+  const checkMobile = useCallback(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  // Initialize Lenis and mobile detection
   useEffect(() => {
-    // Initialize Lenis for better scroll
-    new Lenis({
-      autoRaf: true,
-    });
+    // Initialize Lenis once
+    if (!lenisRef.current) {
+      lenisRef.current = new Lenis({
+        autoRaf: true,
+      });
+    }
 
-    // Set mounted immediately
     setMounted(true);
-
-    // Check if mobile
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
     checkMobile();
-    window.addEventListener("resize", checkMobile);
+
+    // Use passive listener for better performance
+    window.addEventListener("resize", checkMobile, { passive: true });
 
     return () => {
       window.removeEventListener("resize", checkMobile);
+      // Cleanup Lenis on unmount
+      if (lenisRef.current) {
+        lenisRef.current.destroy();
+        lenisRef.current = null;
+      }
     };
-  }, []);
+  }, [checkMobile]);
 
-  // Handle first mount and route changes
+  // Handle route changes
   useEffect(() => {
     if (!mounted) return;
 
-    // Skip transition on first mount
     if (isFirstMount.current) {
       isFirstMount.current = false;
       return;
     }
   }, [pathname, mounted]);
 
-  // Function to handle navigation with transition
-  const handleRouteChange = (path: string) => {
-    // Don't transition if we're already on this page
-    if (path === pathname || isTransitioning) return;
+  // Optimized route change handler
+  const handleRouteChange = useCallback(
+    (path: string) => {
+      if (path === pathname || isTransitioning) return;
 
-    // Set transitioning state
-    setIsTransitioning(true);
-    setShowEntryTransition(false);
+      setIsTransitioning(true);
+      setShowEntryTransition(false);
 
-    // Exit animation
-    const exitAnimation = document.createElement("div");
-    exitAnimation.className =
-      "fixed inset-0 w-screen h-full z-[9999999] dark:bg-primaryDark bg-primary";
-    exitAnimation.style.transform = "scaleX(0)";
-    exitAnimation.style.transformOrigin = "left";
-    exitAnimation.style.transition =
-      "transform 1s cubic-bezier(0.65, 0, 0.35, 1)";
-    document.body.appendChild(exitAnimation);
+      // Create exit animation element
+      const exitAnimation = document.createElement("div");
+      exitAnimation.className =
+        "fixed inset-0 w-screen h-full z-[9999999] dark:bg-primaryDark bg-primary";
+      exitAnimation.style.cssText = `
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+      will-change: transform;
+    `;
 
-    // Start exit animation
-    requestAnimationFrame(() => {
-      exitAnimation.style.transform = "scaleX(1)";
-    });
+      document.body.appendChild(exitAnimation);
 
-    // After exit animation is complete
-    setTimeout(() => {
-      // First, trigger entry animation
-      setShowEntryTransition(true);
+      // Start exit animation
+      requestAnimationFrame(() => {
+        exitAnimation.style.transform = "scaleX(1)";
+      });
 
-      // Then immediately change route (1ms delay to ensure entry animation starts first)
-      setTimeout(() => {
-        router.push(path);
+      // Handle animation sequence
+      const exitTimer = setTimeout(() => {
+        setShowEntryTransition(true);
 
-        // Remove exit animation element
-        document.body.removeChild(exitAnimation);
+        const routeTimer = setTimeout(() => {
+          router.push(path);
 
-        // Reset states after entry animation completes
-        setTimeout(() => {
-          setIsTransitioning(false);
-          setShowEntryTransition(false);
-        }, 1200); // Match with TransitionEffect duration
-      }, 1);
-    }, 950); // Wait until exit animation is fully complete
-  };
+          // Safe cleanup
+          if (document.body.contains(exitAnimation)) {
+            document.body.removeChild(exitAnimation);
+          }
+
+          const resetTimer = setTimeout(() => {
+            setIsTransitioning(false);
+            setShowEntryTransition(false);
+          }, 1200);
+
+          return () => clearTimeout(resetTimer);
+        }, 1);
+
+        return () => clearTimeout(routeTimer);
+      }, 950);
+
+      return () => clearTimeout(exitTimer);
+    },
+    [pathname, isTransitioning, router]
+  );
+
+  // Show loading state
+  if (!mounted) {
+    return <Loading />;
+  }
 
   return (
     <div className="relative">
-      {/* Entry transition */}
-      {mounted && showEntryTransition && <TransitionEffect />}
-      {/* Main content */}
-      {!mounted ? (
-        <Loading />
-      ) : (
-        <div className="font-mont bg-transparent w-full min-h-screen scroll-smooth flex flex-col overflow-x-hidden">
-          <ClickSpark
-            sparkSize={isMobile ? 8 : 10}
-            sparkRadius={isMobile ? 12 : 15}
-            sparkCount={isMobile ? 6 : 8}
-            duration={400}
-          >
-            <Header onRouteChange={handleRouteChange} />
-            <ScrollToTop />
-            <main className="flex-grow pt-28 px-4 sm:px-6 md:px-8 ">
-              <AnimatePresence mode="wait">{children}</AnimatePresence>
-            </main>
-            <Footer />
-          </ClickSpark>
-        </div>
-      )}
+      {showEntryTransition && <TransitionEffect />}
+
+      <div className="font-mont bg-transparent w-full min-h-screen scroll-smooth flex flex-col overflow-x-hidden">
+        <ClickSpark
+          sparkSize={isMobile ? 8 : 10}
+          sparkRadius={isMobile ? 12 : 15}
+          sparkCount={isMobile ? 6 : 8}
+          duration={400}
+        >
+          <Header onRouteChange={handleRouteChange} />
+          <ScrollToTop />
+          <main className="flex-grow pt-28 px-4 sm:px-6 md:px-8">
+            <AnimatePresence mode="wait">{children}</AnimatePresence>
+          </main>
+          <Footer />
+        </ClickSpark>
+      </div>
     </div>
   );
 }

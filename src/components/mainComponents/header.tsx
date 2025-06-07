@@ -88,8 +88,8 @@ const Header = ({ onRouteChange }: HeaderProps = {}) => {
   };
 
   return (
-    <header className="absolute top-0 left-0 z-10 w-full backdrop-blur-sm px-32 lg:px-10 py-8 font-medium flex items-center justify-between">
-      {/* Mobile hamburger */}
+    <header className="absolute top-0 left-0 z-10 w-full backdrop-blur-sm px-32 lg:px-10 py-8 font-medium flex items-center justify-between select-none">
+      {/* Mobile hamburger icon*/}
       <button
         className="flex-col justify-center items-center hidden lg:flex z-[100]"
         onClick={handleClick}
@@ -173,7 +173,7 @@ const Header = ({ onRouteChange }: HeaderProps = {}) => {
               className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] 
                       w-[90vw] max-w-md max-h-[90vh] overflow-y-auto 
                       flex flex-col justify-center items-center 
-                      bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md p-8 shadow-xl"
+                      bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md p-8 shadow-xl select-none"
               initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
               animate={{ scale: 1, opacity: 1 }}
             >

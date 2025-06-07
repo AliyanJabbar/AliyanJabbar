@@ -45,5 +45,23 @@ export default {
       // => @media (max-width: 479px) { ... }
     },
   },
-  plugins: [],
+  plugins: [
+    // plugin for scrollbar hiding
+    function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
+      const newUtilities = {
+        ".scrollbar-hide": {
+          /* Firefox */
+          "scrollbar-width": "none",
+          /* IE and Edge */
+          "-ms-overflow-style": "none",
+          /* WebKit */
+          "&::-webkit-scrollbar": {
+            display: "none",
+            width: "0",
+            height: "0",
+          },
+        },
+      };
+      addUtilities(newUtilities);
+    },  ],
 } satisfies Config;

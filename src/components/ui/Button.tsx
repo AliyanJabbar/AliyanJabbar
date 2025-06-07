@@ -19,7 +19,7 @@ const Button = ({
   return link ? (
     <Link href={link} className={baseStyles} target={target}>
       <span className="absolute bg-dark dark:bg-light w-[220px] h-[170px] rounded-full top-full left-full transition-all duration-700 group-hover:top-[-30px] group-hover:left-[-30px]"></span>
-      <span className="relative z-10 flex items-center justify-evenly gap-2 xs:gap-1 w-full h-full px-3 font-bold text-xl">
+      <span className="relative z-10 flex items-center justify-evenly gap-2 xs:gap-1 w-full h-full px-3 font-bold text-xl select-none">
         <span>{text}</span>
         {icon && <span>{icon}</span>}
       </span>
@@ -27,7 +27,7 @@ const Button = ({
   ) : (
     <button className={baseStyles}>
       <span className="absolute bg-dark dark:bg-light w-[220px] h-[170px] rounded-full top-full left-full transition-all duration-700 group-hover:top-[-30px] group-hover:left-[-30px]"></span>
-      <div className="flex items-center justify-evenly gap-2 w-full h-full px-3 font-bold text-xl">
+      <div className="flex items-center justify-evenly gap-2 w-full h-full px-3 font-bold text-xl select-none">
         <span className="relative z-10">{text}</span>
         {icon && <span className="z-10">{icon}</span>}
       </div>

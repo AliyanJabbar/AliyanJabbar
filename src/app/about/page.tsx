@@ -5,8 +5,56 @@ import CountUp from "../../components/ui/Count";
 import Approach from "@/components/mainComponents/Approach";
 import MainParallax from "@/components/mainComponents/MainParallax";
 import ProfileCard from "@/components/ui/ProfileCard";
+import SecondHeader from "@/components/ui/SecondHeader";
+import dynamic from "next/dynamic";
+// import Skills from "@/components/mainComponents/Skills";
+
+const Skills = dynamic(() => import("@/components/mainComponents/Skills"), {
+  ssr: false,
+});
 
 const About = () => {
+  // stats for counters
+  const Stats = [
+    {
+      count: 1,
+      label: "Satisfied Clients",
+      duration: 1,
+    },
+    {
+      count: 15,
+      label: "Projects Completed",
+      duration: 1,
+    },
+    {
+      count: 2,
+      label: "Learning Years",
+      duration: 1,
+    },
+  ];
+
+  const Counters = Stats.map((stat, index) => {
+    return (
+      <div
+        className="text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl xl:flex xl:flex-col xl:items-center xl:justify-center"
+        key={index}
+      >
+        <div>
+          <CountUp
+            from={0}
+            to={stat.count}
+            separator=","
+            direction="up"
+            duration={stat.duration}
+          />
+          +
+        </div>
+        <h2 className="text-xl xl:text-nowrap md:text-wrap font-medium text-dark/75 dark:text-white/75 xl:text-center md:text-lg sm:text-base xs:text-sm">
+          {stat.label}
+        </h2>
+      </div>
+    );
+  });
   return (
     <main className="flex w-full flex-col items-center justify-center">
       <Layout className="pt-16">
@@ -24,8 +72,8 @@ const About = () => {
               Hi, I'm <span className="font-bold">Aliyan</span> — a passionate
               Web Developer and UI/UX Designer dedicated to crafting beautiful,
               functional, and user-centered digital experiences. With over 2
-              years of experience in the field, I’m always seeking new and
-              innovative ways to transform my clients' ideas into reality.
+              years of learning advance web technologies, I’m always seeking new
+              and innovative ways to transform my clients' ideas into reality.
             </p>
             <p className="my-4 font-medium text-dark dark:text-white">
               For me, design isn't just about making things look good — it's
@@ -61,67 +109,22 @@ const About = () => {
           </div>
           {/* counters */}
           <div className="col-span-2 flex flex-col items-end text-right justify-between text-black dark:text-white xl:col-span-8 xl:flex-row xl:items-center md:order-3 ">
-            {/* count 1 */}
-            <div className="text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl xl:flex xl:flex-col xl:items-center xl:justify-center">
-              <div>
-                <CountUp
-                  from={0}
-                  to={1}
-                  separator=","
-                  direction="up"
-                  duration={1}
-                />
-                +
-              </div>
-              <h2 className="text-xl xl:text-nowrap md:text-wrap font-medium text-dark/75 dark:text-white/75 xl:text-center md:text-lg sm:text-base xs:text-sm">
-                Satisfied Clients
-              </h2>
-            </div>
-            {/* count 2 */}
-            <div className="text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl xl:flex xl:flex-col xl:items-center xl:justify-center">
-              <div>
-                <CountUp
-                  from={0}
-                  to={15}
-                  separator=","
-                  direction="up"
-                  duration={1}
-                />
-                +
-              </div>
-              <h2 className="text-xl text-nowrap md:text-wrap font-medium text-dark/75 dark:text-white/75 xl:text-center md:text-lg sm:text-base xs:text-sm">
-                Projects Completed
-              </h2>
-            </div>
-            {/* count 3 */}
-            <div className="text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl xl:flex xl:flex-col xl:items-center xl:justify-center">
-              <div>
-                <CountUp
-                  from={0}
-                  to={2}
-                  separator=","
-                  direction="up"
-                  duration={1}
-                />
-                +
-              </div>
-              <h2 className="text-xl text-nowrap md:text-wrap font-medium text-dark/75 dark:text-white/75 xl:text-center md:text-lg sm:text-base xs:text-sm">
-                Learning Years
-              </h2>
-            </div>
+            {Counters}
           </div>
         </div>
         {/* Approach section */}
-        <div className="mt-16 flex flex-col items-center justify-center w-full">
-          <AnimatedText
-            text="Approach"
-            className="mb-16 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8 leading-[1.1]"
-          />
+        <div className="mt-36 flex flex-col items-center justify-center w-full">
+          <SecondHeader title="Followed" subtitle="Approach" />
           <Approach />
         </div>
         {/* offered services */}
         <div>
           <MainParallax />
+        </div>
+        {/* skills */}
+        <div className="mt-32 mb-10">
+          <SecondHeader title="Tech" subtitle="Stack" />
+          <Skills />
         </div>
       </Layout>
     </main>
