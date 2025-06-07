@@ -57,9 +57,24 @@ export const technologies = [
     description: "Utility-first CSS",
   },
   {
+    name: "Agents SDK",
+    icon: "/tech/openai.png",
+    description: "Powerfull Agents Software Devlopment Kit",
+  },
+  {
+    name: "Gemini",
+    icon: "/tech/gemini.png",
+    description: "Powerfull API provider",
+  },
+  {
     name: "Sanity",
     icon: "/tech/sanity.png",
     description: "Content Management System CMS",
+  },
+  {
+    name: "Framer Motion",
+    icon: "/tech/framermotion.png",
+    description: "Light weight animation library",
   },
   {
     name: "Vercel",
@@ -130,7 +145,7 @@ export const BallCanvas = ({
 }) => {
   return (
     <Canvas
-      frameloop="demand"
+      frameloop="always"
       dpr={[1, 2]}
       gl={{ preserveDrawingBuffer: true }}
     >

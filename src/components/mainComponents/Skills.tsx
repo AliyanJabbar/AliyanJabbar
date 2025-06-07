@@ -3,9 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BallCanvas, technologies } from "../canvas/Ball";
 
 const Skills = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedCategory, setSelectedCategory] = useState<string>("frontend");
   const [isVisible, setIsVisible] = useState<boolean>(false);
-
   // Categorize technologies
   const categorizedTechs = useMemo(() => {
     const categories = {
@@ -17,29 +16,26 @@ const Skills = () => {
         "React JS",
         "Next JS",
       ],
-      styling: ["Tailwind CSS", "CSS 3"],
-      animation: ["GSAP", "Three JS"],
-      tools: ["git", "figma", "Vercel", "Redux Toolkit"],
+      styling: ["Tailwind CSS", "CSS 3", "Framer Motion", "Shadcn UI"],
+      animation: ["GSAP", "Three JS", "Framer Motion"],
+      agents: ["Python", "Agents SDK", "Gemini"],
+      advance: ["Sanity", "Redux Toolkit"],
+      tools: ["git", "figma", "Vercel"],
     };
 
-    return {
-      all: technologies,
-      ...Object.entries(categories).reduce((acc, [key, names]) => {
-        acc[key] = technologies.filter((tech) => names.includes(tech.name));
-        return acc;
-      }, {} as Record<string, typeof technologies>),
-    };
+    return Object.entries(categories).reduce((acc, [key, names]) => {
+      acc[key] = technologies.filter((tech) => names.includes(tech.name));
+      return acc;
+    }, {} as Record<string, typeof technologies>);
   }, []);
 
   const filteredTechs =
-    categorizedTechs[selectedCategory as keyof typeof categorizedTechs] ||
-    technologies;
+    categorizedTechs[selectedCategory as keyof typeof categorizedTechs] || [];
 
   const handleCategoryChange = useCallback((categoryKey: string) => {
     setSelectedCategory(categoryKey);
   }, []);
 
-  // container variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -58,7 +54,6 @@ const Skills = () => {
     },
   };
 
-  // item variants
   const itemVariants = {
     hidden: {
       opacity: 0,
@@ -88,11 +83,6 @@ const Skills = () => {
 
   const categories = [
     {
-      key: "all",
-      label: "All Skills",
-      icon: "🎯",
-    },
-    {
       key: "frontend",
       label: "Frontend",
       icon: "⚛️",
@@ -106,6 +96,16 @@ const Skills = () => {
       key: "animation",
       label: "Animation",
       icon: "✨",
+    },
+    {
+      key: "agents",
+      label: "Agents",
+      icon: "🤖",
+    },
+    {
+      key: "advance",
+      label: "Advance",
+      icon: "➕",
     },
     {
       key: "tools",
@@ -123,6 +123,9 @@ const Skills = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
+        onViewportEnter={() => {
+          setIsVisible(true);
+        }}
       >
         <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400 mb-2">
           Technologies I Work With
@@ -173,13 +176,11 @@ const Skills = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            onViewportEnter={() => {
-              setIsVisible(true);
-            }}
+            viewport={{ once: false }}
           >
-            {filteredTechs.map((technology, index) => (
+            {filteredTechs.map((technology) => (
               <motion.div
-                key={technology.name} // Use technology.name instead of category-name
+                key={technology.name}
                 variants={itemVariants}
                 className="relative group"
                 whileHover={{
@@ -191,9 +192,7 @@ const Skills = () => {
                 <div className="relative w-32 h-32 lg:w-28 lg:h-28 md:w-24 md:h-24 cursor-grab">
                   <BallCanvas icon={technology.icon} isVisible={isVisible} />
                 </div>
-
-                {/* Skill Name */}
-                <div className="text-center text-dark dark:text-light whitespace-nowrap mt-2 group-hover:opacity-100 opacity-80 group-hover:scale-105 transition duration-300">
+                <div className="text-center text-dark dark:text-light whitespace-nowrap mt-2 group-hover:opacity-100 opacity-80 group-hover:scale-105 group-hover:text-primary dark:group-hover:text-primaryDark transition duration-300">
                   <p>{technology.name}</p>
                 </div>
               </motion.div>
@@ -201,7 +200,6 @@ const Skills = () => {
           </motion.div>
         </AnimatePresence>
       </div>
-
       {/* Skills Summary */}
       <motion.div
         className="mt-16 text-center"
@@ -214,7 +212,7 @@ const Skills = () => {
           <span className="text-2xl">🚀</span>
           <div className="text-left">
             <div className="text-sm font-semibold text-gray-900 dark:text-white">
-              {filteredTechs.length} Technologies
+              {technologies.length} Technologies
             </div>
             <div className="text-xs text-gray-600 dark:text-gray-400">
               Constantly learning & growing

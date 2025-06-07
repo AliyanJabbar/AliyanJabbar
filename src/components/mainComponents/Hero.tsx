@@ -21,7 +21,6 @@ export default function Hero() {
 
   return (
     <main className="flex items-center text-dark dark:text-light w-full min-h-screen">
-      {/* Remove TransitionEffect from here */}
       <Layout className="pt-0 md:p-16 sm:pt-8">
         {/* layout */}
         <div className="flex lg:flex-col flex-row items-center justify-between w-full gap-8">
@@ -59,8 +58,7 @@ export default function Hero() {
                   )}
                 </div>
               )}
-
-              {/* Optional: Add a subtle overlay text or icon in the center */}
+              {/* overlay */}
               <div className="absolute z-10 text-center opacity-80 dark:opacity-90 pointer-events-none">
                 <div className="text-4xl font-bold dark:text-teal-300  text-rose-500">
                   AJ
