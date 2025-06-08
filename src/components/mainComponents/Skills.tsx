@@ -1,6 +1,13 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+  useRef,
+} from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { BallCanvas, technologies } from "../canvas/Ball";
+import { BallCanvas, technologies } from "../canvas/tech/Ball";
+import styles from "../moduleCSS/Skills.module.css";
 
 const Skills = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("frontend");

@@ -28,7 +28,7 @@ const subFont = Monsieur_La_Doulaise({
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-mont",
-  display: "swap", // Better font loading performance
+  display: "swap",
 });
 
 export default function RootLayout({
