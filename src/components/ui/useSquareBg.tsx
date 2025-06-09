@@ -9,7 +9,7 @@ const SquareBg = () => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const directionIndexRef = useRef(0);
 
-  const directions: Direction[] = ["diagonal", "up", "down", "right", "left"];
+  const directions: Direction[] = ["diagonal", "up", "right", "down", "left"];
 
   const updateDirection = useCallback(() => {
     directionIndexRef.current =

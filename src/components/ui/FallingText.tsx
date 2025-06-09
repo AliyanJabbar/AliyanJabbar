@@ -203,22 +203,22 @@ const FallingText: React.FC<FallingTextProps> = ({
       requestAnimationFrame(updateLoop);
     };
     updateLoop();
-  return () => {
-    Render.stop(render);
-    Runner.stop(runner);
-    if (render.canvas && currentCanvasContainer) {
-      currentCanvasContainer.removeChild(render.canvas);
-    }
-    World.clear(engine.world, false);
-    Engine.clear(engine);
-  };
-}, [
-  effectStarted,
-  gravity,
-  wireframes,
-  backgroundColor,
-  mouseConstraintStiffness,
-]);
+    return () => {
+      Render.stop(render);
+      Runner.stop(runner);
+      if (render.canvas && currentCanvasContainer) {
+        currentCanvasContainer.removeChild(render.canvas);
+      }
+      World.clear(engine.world, false);
+      Engine.clear(engine);
+    };
+  }, [
+    effectStarted,
+    gravity,
+    wireframes,
+    backgroundColor,
+    mouseConstraintStiffness,
+  ]);
 
   const handleTrigger = () => {
     if (!effectStarted && (trigger === "click" || trigger === "hover")) {
