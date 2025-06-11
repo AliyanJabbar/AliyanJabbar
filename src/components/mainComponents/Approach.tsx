@@ -8,8 +8,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const Approach = () => {
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = resolvedTheme || theme;
-  const color = currentTheme == "dark" ? "blue" : "pink";
-  const svgColor = currentTheme == "dark" ? "#58E6D9" : "#EC407A";
+  const color = currentTheme == "dark" ? "blue" : "purple";
+  const svgColor = currentTheme == "dark" ? "#58E6D9" : "#9370DB";
 
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({

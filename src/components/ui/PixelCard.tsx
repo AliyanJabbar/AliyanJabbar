@@ -136,17 +136,17 @@ const VARIANTS = {
     colors: "#e0f2fe,#7dd3fc,#0ea5e9,#0284c7,#0369a1",
     noFocus: false,
   },
-  pink: {
-    activeColor: "#fecdd3",
+  purple: {
+    activeColor: "#E6E6FA",
     gap: 5,
     speed: 80,
-    colors: "#fecdd3,#fda4af,#e11d48,#be185d,#9f1239",
+    colors: "#E6E6FA,#9966CC,#9400D3,#800080,#DA70D6",
     noFocus: true,
   },
 };
 
 interface PixelCardProps {
-  variant?: "default" | "blue" | "pink";
+  variant?: "default" | "blue" | "purple";
   gap?: number;
   speed?: number;
   colors?: string;

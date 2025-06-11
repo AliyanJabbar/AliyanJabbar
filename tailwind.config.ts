@@ -17,7 +17,7 @@ export default {
       colors: {
         dark: "#1b1b1b", //blackish
         light: "#f5f5f5", //whitish
-        primary: "#EC407A", // 240,86,199
+        primary: "#9370DB", // purple
         primaryDark: "#58E6D9", // 80,230,217 //sky blueish
       },
     },

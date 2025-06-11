@@ -54,7 +54,6 @@ const ScrollToTop = () => {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, {
         duration: 2,
-        // easing: (t) => t*2, // Linear easing; customize as needed
       });
     }
   };
@@ -71,9 +70,8 @@ const ScrollToTop = () => {
             boxShadow:
               currentTheme === "dark"
                 ? "0 0 20px rgba(88, 230, 217, 0.5)"
-                : "0 0 20px rgba(236, 64, 122, 0.5)",
+                : "0 0 20px rgba(153, 102, 204, 0.5)",
           }}
-          whileTap={{ scale: 0.9 }}
           transition={{
             type: "spring",
             stiffness: 260,
@@ -85,10 +83,7 @@ const ScrollToTop = () => {
             bg-primary dark:bg-primaryDark
             text-light dark:text-dark
             shadow-lg hover:shadow-xl
-            border-2 border-transparent
-            hover:border-primary hover:dark:border-primaryDark
             transition-all duration-300 ease-in-out
-            focus:outline-none focus:ring-4 focus:ring-primary/30 dark:focus:ring-primaryDark/30
             group xs:hidden
           `}
           aria-label="Scroll to top"
