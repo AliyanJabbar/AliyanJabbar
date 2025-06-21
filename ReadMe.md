@@ -1,5 +1,5 @@
 # 💫 About Me:
-🔭 I’m currently Making Highly Interactive Frontend Application With Fully Responsive Design<br><br>🌱 I’m currently learning DevOps <br><br>🤝 Feel Free to Connect with me<br><br>⚡ Coding Lover
+🔭 I’m currently Making Highly Interactive Frontend Application With Fully Responsive Design<br><br>🌱 I’m currently learning advance Frontend & Backend tecknologies <br><br>🤝 Feel Free to Connect with me<br><br>⚡ Coding Lover
 
 
 ## 🌐 Socials:
