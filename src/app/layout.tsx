@@ -37,7 +37,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="scrollbar-hide">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className="scrollbar-none selection dark:selection"
+    >
       <body
         className={`${montserrat.variable} ${subFont.variable} bg-light dark:bg-dark scroll-smooth antialiased`}
       >

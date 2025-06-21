@@ -6,7 +6,7 @@ import SquareBg from "@/components/ui/useSquareBg";
 export default function Home() {
   return (
     <main>
-      <SquareBg />
+        <SquareBg />
       <div className="relative z-20">
         <HireMe />
       </div>

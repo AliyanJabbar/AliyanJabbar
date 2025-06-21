@@ -89,28 +89,6 @@ const Header = ({ onRouteChange }: HeaderProps = {}) => {
 
   return (
     <header className="absolute top-0 left-0 z-10 w-full backdrop-blur-sm px-32 lg:px-10 py-8 font-medium flex items-center justify-between select-none">
-      {/* Mobile hamburger icon*/}
-      <button
-        className="flex-col justify-center items-center hidden lg:flex z-[100]"
-        onClick={handleClick}
-      >
-        <span
-          className={`bg-dark dark:bg-light block h-0.5 w-6 rounded-sm  ${
-            isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
-          } transition-all duration-300 ease-in-out`}
-        ></span>
-        <span
-          className={`bg-dark dark:bg-light block h-0.5 w-6 rounded-sm my-0.5 ${
-            isOpen ? "opacity-0" : "opacity-100"
-          } transition-all duration-300 ease-in-out`}
-        ></span>
-        <span
-          className={`bg-dark dark:bg-light block h-0.5 w-6 rounded-sm ${
-            isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5 "
-          } transition-all duration-300 ease-in-out`}
-        ></span>
-      </button>
-
       {/* navigation for large screens */}
       <div className="w-full flex items-center justify-between lg:hidden">
         {/*using CustomLinks as navigation links */}
@@ -136,7 +114,7 @@ const Header = ({ onRouteChange }: HeaderProps = {}) => {
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className={`flex items-center justify-center rounded-full p-2 ${
+              className={`flex items-center justify-center rounded-full p-[7px] ${
                 theme === "dark" ? "text-dark bg-light" : "bg-dark text-light"
               }`}
               title="Theme Toggle"
@@ -155,6 +133,28 @@ const Header = ({ onRouteChange }: HeaderProps = {}) => {
       <div className="absolute left-[50%] top-2 translate-x-[-50%]">
         <Logo />
       </div>
+
+      {/* Mobile hamburger icon*/}
+      <button
+        className="flex-col justify-center items-center hidden lg:flex z-50 ml-auto"
+        onClick={handleClick}
+      >
+        <span
+          className={`bg-dark dark:bg-light block h-0.5 w-6 rounded-sm  ${
+            isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
+          } transition-all duration-300 ease-in-out`}
+        ></span>
+        <span
+          className={`bg-dark dark:bg-light block h-0.5 w-6 rounded-sm my-0.5 ${
+            isOpen ? "opacity-0" : "opacity-100"
+          } transition-all duration-300 ease-in-out`}
+        ></span>
+        <span
+          className={`bg-dark dark:bg-light block h-0.5 w-6 rounded-sm ${
+            isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5 "
+          } transition-all duration-300 ease-in-out`}
+        ></span>
+      </button>
 
       {/* navigation for small screens */}
       {mounted &&

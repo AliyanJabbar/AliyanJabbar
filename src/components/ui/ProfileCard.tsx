@@ -304,7 +304,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                 </div>
                 <Link
                   href={href}
-                  target="_blank"
                   className={styles["pc-contact-btn"]}
                   style={{ pointerEvents: "auto" }}
                   type="button"

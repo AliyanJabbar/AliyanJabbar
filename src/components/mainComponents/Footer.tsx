@@ -28,7 +28,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative z-10 w-full backdrop-blur-sm border-t-2 border-solid border-dark dark:border-light text-lg text-dark dark:text-light mt-auto text-nowrap">
+    <footer className="relative bottom-0 z-10 w-full backdrop-blur-sm border-t-2 border-solid border-dark dark:border-light text-lg text-dark dark:text-light mt-auto text-nowrap">
       <Layout className="py-8 flex lg:flex-col lg:gap-2 items-center justify-between">
         {/* copyright */}
         <span>{new Date().getFullYear()} &copy; All Rights Reserved</span>
@@ -44,10 +44,7 @@ const Footer = () => {
         </div>
         <CustomUnderLink
           text="Say Hello"
-          link="/"
-          className=""
-          target="_blank"
-          rel="noopener noreferrer"
+          link="/contact"
         />
       </Layout>
     </footer>

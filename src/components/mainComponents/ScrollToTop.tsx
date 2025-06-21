@@ -1,13 +1,14 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
 import Lenis from "lenis";
+import { FaArrowUp } from "react-icons/fa6";
+import { zoomIn } from "../utils/motion";
+import styles from "../moduleCSS/upAdown.module.css";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const { theme, resolvedTheme } = useTheme();
-  const currentTheme = resolvedTheme || theme;
+  const [isIconHovered, setIsIconHovered] = useState(false);
 
   const lenisRef = useRef<Lenis | null>(null);
 
@@ -62,72 +63,27 @@ const ScrollToTop = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.5, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          whileHover={{
-            scale: 1.1,
-            boxShadow:
-              currentTheme === "dark"
-                ? "0 0 20px rgba(88, 230, 217, 0.5)"
-                : "0 0 20px rgba(153, 102, 204, 0.5)",
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 260,
-            damping: 20,
-          }}
           onClick={scrollToTop}
-          className={`
-            fixed bottom-8 right-8 z-50 p-4 rounded-full
-            bg-primary dark:bg-primaryDark
-            text-light dark:text-dark
-            shadow-lg hover:shadow-xl
-            transition-all duration-300 ease-in-out
-            group xs:hidden
-          `}
-          aria-label="Scroll to top"
+          className="fixed bottom-5 right-[100px] cursor-pointer z-50 md:hidden visible"
+          variants={zoomIn(0, 0.5)}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          whileTap={{
+            scale: 0.9,
+            transition: { duration: 0.1 },
+          }}
+          onHoverStart={() => setIsIconHovered(true)}
+          onHoverEnd={() => setIsIconHovered(false)}
         >
-          {/* Arrow Icon */}
-          <motion.svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="group-hover:animate-bounce"
-            initial={{ y: 0 }}
-            animate={{ y: [0, -2, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          >
-            <path
-              d="M12 19V5M5 12L12 5L19 12"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+          <div className="w-14 h-14 rounded-full bg-primary dark:bg-primaryDark flex justify-center items-center">
+            <FaArrowUp
+              className={`text-light dark:text-dark w-full ${
+                isIconHovered && styles["upAdown"]
+              }`}
+              size={20}
             />
-          </motion.svg>
-
-          {/* Ripple Effect */}
-          <motion.div
-            className={`
-              absolute inset-0 rounded-full
-              bg-primary dark:bg-primaryDark
-              opacity-20
-            `}
-            initial={{ scale: 0 }}
-            animate={{ scale: [0, 1.2, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
+          </div>
         </motion.button>
       )}
     </AnimatePresence>

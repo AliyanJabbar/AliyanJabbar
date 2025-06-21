@@ -1,5 +1,7 @@
 "use client";
 import "./globals.css";
+import type React from "react";
+
 import Header from "@/components/mainComponents/header";
 import ClickSpark from "../components/ui/ClickSpark";
 import Footer from "@/components/mainComponents/Footer";
@@ -10,6 +12,7 @@ import { AnimatePresence } from "framer-motion";
 import TransitionEffect from "@/components/ui/Transition";
 import ScrollToTop from "@/components/mainComponents/ScrollToTop";
 import Lenis from "lenis";
+import AIAssistantWidget from "../components/mainComponents/ChatWidget"; // Updated import
 
 export default function ClientLayout({
   children,
@@ -98,7 +101,6 @@ export default function ClientLayout({
         const routeTimer = setTimeout(() => {
           router.push(path);
 
-          // Safe cleanup
           if (document.body.contains(exitAnimation)) {
             document.body.removeChild(exitAnimation);
           }
@@ -128,7 +130,7 @@ export default function ClientLayout({
     <div className="relative">
       {showEntryTransition && <TransitionEffect />}
 
-      <div className="font-mont bg-transparent w-full min-h-screen scroll-smooth flex flex-col overflow-x-hidden">
+      <div className="font-mont bg-transparent w-full scroll-smooth flex flex-col overflow-x-hidden">
         <ClickSpark
           sparkSize={isMobile ? 8 : 10}
           sparkRadius={isMobile ? 12 : 15}
@@ -136,13 +138,15 @@ export default function ClientLayout({
           duration={400}
         >
           <Header onRouteChange={handleRouteChange} />
-          <ScrollToTop />
-          <main className="flex-grow pt-28 px-4 sm:px-6 md:px-8">
+          <main className="flex-grow pt-28 px-4 sm:px-6 md:px-8 min-h-[85vh]">
             <AnimatePresence mode="wait">{children}</AnimatePresence>
           </main>
           <Footer />
         </ClickSpark>
       </div>
+
+      <ScrollToTop />
+      <AIAssistantWidget />
     </div>
   );
 }

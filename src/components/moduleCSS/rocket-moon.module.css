@@ -1,0 +1,226 @@
+/* contact */
+.rocket-moon-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.card {
+  width: 512px;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(48, 48, 48, 1) 48%,
+    rgb(0, 0, 0) 100%
+  );
+  background-size: 300%, 300%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px 5px #474747;
+  transition: all 1s ease;
+}
+.moon {
+  width: 70px;
+  height: 70px;
+  top: 12%;
+  right: 120px;
+  position: absolute;
+  fill: white;
+  transform: rotate(-20deg);
+  transition: all 1s ease;
+}
+.rocket {
+  width: 70px;
+  height: 70px;
+  bottom: -2%;
+  left: -2%;
+  position: absolute;
+  fill: white;
+  transition: all 1.9s ease;
+}
+
+.star {
+  position: absolute;
+  background: radial-gradient(
+    circle,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 100%
+  );
+  /* background: radial-gradient(circle, rgb(0, 255, 255), rgb(3, 238, 255)); */
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.star-1 {
+  width: 100px;
+  height: 100px;
+  bottom: 90px;
+  left: -15px;
+  transition: all 1s ease;
+}
+
+.star-2 {
+  width: 150px;
+  height: 150px;
+  top: -10%;
+  left: -10%;
+  transition: all 0.5s ease;
+}
+
+.star-3 {
+  width: 100px;
+  height: 100px;
+  bottom: 5%;
+  right: -15px;
+  transition: all 0.3s ease;
+}
+
+.star-4 {
+  width: 20px;
+  height: 20px;
+  top: 4%;
+  right: 5px;
+  transition: all 1.4s ease;
+}
+
+.star-5 {
+  width: 20px;
+  height: 20px;
+  bottom: 24%;
+  right: 45%;
+  animation: rotate 3s normal linear infinite;
+}
+
+.star-6 {
+  width: 20px;
+  height: 20px;
+  top: 15%;
+  right: 20%;
+  animation: rotate 5s normal linear infinite;
+}
+
+.star-7 {
+  width: 40px;
+  height: 40px;
+  top: 34%;
+  right: 65%;
+  animation: rotate 5s normal linear infinite;
+}
+
+.card:hover {
+  background-size: 100%, 100%;
+}
+
+.card:hover .star-1,
+.card:hover .star-3 {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.card:hover .star-2,
+.card:hover .star-4,
+.card:hover .star-5 {
+  transform: scale(1.2) rotate(-150deg);
+}
+
+.card:hover .rocket {
+  transform: scale(0.3) translate(1180px, -1490px) rotate(-250deg);
+}
+
+.card:hover .moon {
+  width: 50px;
+  height: 50px;
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+    transform: rotate3d(0, 0, 1, 90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate3d(0, 0, 1, 270deg);
+    transform: rotate3d(0, 0, 1, 270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+@media (max-width: 1139px) {
+  .card:hover .rocket {
+    transform: scale(0.3) translate(845px, -1490px) rotate(-250deg);
+  }
+
+  .card {
+    width: 412px;
+  }
+}
+
+@media (max-width: 905px) {
+  .card:hover .rocket {
+    transform: scale(0.3) translate(500px, -1568px) rotate(-250deg);
+  }
+
+  .card {
+    width: 312px;
+  }
+}
+
+@media (max-width: 767px) {
+  .card:hover .rocket {
+    transform: scale(0.3) translate(500px, -1450px) rotate(-250deg);
+  }
+
+  .card {
+    width: 312px;
+  }
+}
+
+@media (max-width: 639px) {
+  .card:hover .rocket {
+    transform: scale(0.3) translate(845px, -1360px) rotate(-250deg);
+  }
+
+  .card {
+    width: 412px;
+  }
+}
+
+@media (max-width: 525px) {
+  .card:hover .rocket {
+    transform: scale(0.3) translate(510px, -1450px) rotate(-250deg);
+  }
+
+  .card {
+    width: 312px;
+  }
+}

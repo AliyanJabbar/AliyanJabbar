@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Squares from "./SquaresBg";
+import { useTheme } from "next-themes";
 
 type Direction = "diagonal" | "up" | "down" | "right" | "left";
 
@@ -8,6 +9,9 @@ const SquareBg = () => {
   const [direction, setDirection] = useState<Direction>("diagonal");
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const directionIndexRef = useRef(0);
+  
+  const { theme, resolvedTheme } = useTheme();
+  const actualTheme = resolvedTheme || theme;
 
   const directions: Direction[] = ["diagonal", "up", "right", "down", "left"];
 
@@ -35,8 +39,12 @@ const SquareBg = () => {
   }, [updateDirection]);
 
   return (
-    <div className="fixed top-0 left-0 -z-10 dark:bg-dark bg-light opacity-0 dark:opacity-100 w-full h-screen">
-      <Squares squareSize={50} direction={direction} speed={1.5} />
+    <div className="fixed top-0 left-0 -z-10 dark:bg-dark bg-light w-full h-screen">
+      {
+        actualTheme === "dark" ? <Squares squareSize={50} direction={direction} speed={1.5} />
+         : <Squares squareSize={50} direction={direction} speed={1.5} borderColor={'#9999'} /> 
+
+      }
     </div>
   );
 };

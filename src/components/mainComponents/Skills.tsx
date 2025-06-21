@@ -2,12 +2,9 @@ import React, {
   useState,
   useCallback,
   useMemo,
-  useEffect,
-  useRef,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BallCanvas, technologies } from "../canvas/tech/Ball";
-import styles from "../moduleCSS/Skills.module.css";
 
 const Skills = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("frontend");
@@ -153,7 +150,7 @@ const Skills = () => {
             onClick={() => handleCategoryChange(category.key)}
             className={`group relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 overflow-hidden ${
               selectedCategory === category.key
-                ? "text-white shadow-lg scale-105"
+                ? "text-dark shadow-lg scale-105"
                 : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
             }`}
             whileHover={{ scale: 1.05 }}

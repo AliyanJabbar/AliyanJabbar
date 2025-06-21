@@ -66,9 +66,9 @@ const FeaturedProject = ({
         <p className="my-2 font-medium text-dark dark:text-light sm:text-sm">
           {summary}
         </p>
-        <div className="mt-2 flex items-center justify-start gap-5">
+        <div className="mt-2 flex items-center justify-start gap-7">
           <div className="z-10">
-            <GithubIcon link={github} size="40px" />
+            <GithubIcon link={github} size="40px"/>
           </div>
           <Button text="Visit Project" link={link} target="_blank" />
         </div>
@@ -153,7 +153,7 @@ const Project = ({
 
 export default function Projects() {
   return (
-    <main className="w-full mb-16 flex flex-col items-center justify-center">
+    <main className="w-full mb-16 flex flex-col items-center justify-center scrollbar-hide">
       <Layout className="pt-16 xs:p-0">
         <AnimatedText
           text="Where Innovation Meets Code"
@@ -172,7 +172,7 @@ export default function Projects() {
               summary="Developed during a GIAIC Hackathon, Food Chukh is a fully functional E-Commerce platform designed for food ordering. This Project has it's own Admin Dashboard for managing orders and customers. The project uses Sanity as a headless CMS to manage product data and blog content, while Next.js powers both the frontend and backend."
               github="https://github.com/AliyanJabbar/Hackathon-Food-Chukh"
               link="https://hackathon-ui-ux-nine.vercel.app/"
-              img="/assets/projects/5.png"
+              img="/projects/5.png"
               type="E-Commerce"
             />
           </div>
@@ -183,7 +183,7 @@ export default function Projects() {
               summary="Single Page Portfolio Website made with Next.js and Tailwind CSS. This project is a showcase of my skills to convert a figma design to Real World Project."
               github="https://github.com/AliyanJabbar/Next.Js-Projects/tree/main/figma-project"
               link="https://figma-portfolio-next-js.vercel.app/"
-              img="/assets/projects/3.png"
+              img="/projects/3.png"
               type="Figma => Next JS"
             />
           </div>
@@ -194,7 +194,7 @@ export default function Projects() {
               summary=" Admin Dashboard for Food Chukh E-Commerce Website. The project uses Sanity as a headless CMS to manage product's data and customer's orders."
               github="https://github.com/AliyanJabbar/Food-Chukh-Admin-Dashboard"
               link="https://food-chukh-admin-dashboard.vercel.app/"
-              img="/assets/projects/7.png"
+              img="/projects/7.png"
               type="Food Chukh"
             />
           </div>
@@ -205,7 +205,7 @@ export default function Projects() {
               summary="A complaint registration portal for TMC Model Colony, designed to streamline the process of lodging complaints. The project uses Next.js for the frontend and backend, with a Sanity CMS connection for the management of complaints and user data. This complain portal also offers authentication and authorization features, ensuring secure access for users."
               github="https://github.com/AliyanJabbar/TMC-Model-Colony-Complain-Registration-Portal"
               link="https://tmc-model-colony-complain-registration.vercel.app/"
-              img="/assets/projects/8.png"
+              img="/projects/8.png"
               type="Complaint Registration Portal"
             />
           </div>
@@ -216,7 +216,7 @@ export default function Projects() {
               summary="Facebook Login Page Clone made with Next.js and Tailwind CSS. This project showcases my skills to convert a figma design to Real World Project."
               github="https://github.com/AliyanJabbar/Next.Js-Projects/tree/main/facebook-login-clone/my-app"
               link="https://facebook-login-nextjs-clone.vercel.app/"
-              img="/assets/projects/6.png"
+              img="/projects/6.png"
               type="Clone"
             />
           </div>
@@ -227,7 +227,7 @@ export default function Projects() {
               summary="Portfolio Website made with HTML, CSS and JavaScript. This project is a showcase of my skills to convert a figma design to Real World Project."
               github="https://github.com/AliyanJabbar/Portfolio-HTML-CSS-JS"
               link="https://portfolio-html-css-js-blush.vercel.app/"
-              img="/assets/projects/4.png"
+              img="/projects/4.png"
               type="Portfolio Website"
             />
           </div>
@@ -238,7 +238,7 @@ export default function Projects() {
               summary="Developed during a GIAIC Hackathon, This Resume Builder provides 100% free resume building service, designed for Making Good Looking and professional Resume/CV. The project uses HTML as a markup, css for styling and javascript for interactions."
               github="https://github.com/AliyanJabbar/Hackathon/tree/master/MileStone-3%2C4%265"
               link="https://online-resume-builder-service.vercel.app/"
-              img="/assets/projects/2.png"
+              img="/projects/2.png"
               type="Free"
             />
           </div>
@@ -249,7 +249,7 @@ export default function Projects() {
               summary="This is a simple resume-like portfolio website made with HTML, CSS, and JavaScript. It showcases my skills in a clean and professional format."
               github="https://github.com/AliyanJabbar/Hackathon/tree/master/MileStone-1&2"
               link="https://interactive-resume-html-css.vercel.app/"
-              img="/assets/projects/1.png"
+              img="/projects/1.png"
               type="Resume Like Portfolio"
             />
           </div>
@@ -260,7 +260,7 @@ export default function Projects() {
               summary="This project allows users to create, read, update, and delete tasks. The app uses Neon DB for data storage and management."
               github="https://github.com/AliyanJabbar/Next.Js-Projects/tree/main/28-todo-app/my-todo-app"
               link="https://todo-app-nextjs-plum.vercel.app/"
-              img="/assets/projects/9.png"
+              img="/projects/9.png"
               type="Database | Next JS"
             />
           </div>

@@ -67,8 +67,13 @@ const Squares: React.FC<SquaresProps> = ({
         canvas.height / 2,
         Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
       );
-      gradient.addColorStop(1, "rgba(27, 27, 27, 0)");
-      gradient.addColorStop(0, "#1b1b1b");
+
+      const gradientConfig =
+        borderColor === "#999"
+          ? { start: "#1b1b1b", end: "rgba(27, 27, 27, 0)" }
+          : { start: "#f5f5f5", end: "rgba(245, 245, 245, 0)" };
+      gradient.addColorStop(0, gradientConfig.start);
+      gradient.addColorStop(1, gradientConfig.end);
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     };

@@ -1,14 +1,12 @@
 "use client";
 import AnimatedText from "@/components/ui/AnimatedText";
 import Layout from "@/components/mainComponents/layout";
-import CountUp from "../../components/ui/Count";
+import CountUp from "../../../components/ui/Count";
 import Approach from "@/components/mainComponents/Approach";
 import MainParallax from "@/components/mainComponents/MainParallax";
 import ProfileCard from "@/components/ui/ProfileCard";
 import SecondHeader from "@/components/ui/SecondHeader";
 import dynamic from "next/dynamic";
-// import Skills from "@/components/mainComponents/Skills";
-
 const Skills = dynamic(() => import("@/components/mainComponents/Skills"), {
   ssr: false,
 });
@@ -101,9 +99,9 @@ const About = () => {
               showUserInfo={true}
               enableTilt={true}
               showBehindGradient={true}
-              grainUrl="/grain.jpg"
+              grainUrl="/about/grain.jpg"
               behindGradient="bg-gradient-to-r from-primary to-primaryDark dark:from-primaryDark dark:to-primary"
-              href="mailto:jabbaraliyan805@gmail.com"
+              href="/contact"
               className="xl:col-span-4 md:order-1 md:col-span-8 flex items-center justify-center"
             />
           </div>

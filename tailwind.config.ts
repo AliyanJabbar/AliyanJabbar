@@ -19,9 +19,10 @@ export default {
         light: "#f5f5f5", //whitish
         primary: "#9370DB", // purple
         primaryDark: "#58E6D9", // 80,230,217 //sky blueish
+        grayish: "#3b3b3b",
+        lightGray: "#9b9b9b",
       },
     },
-
     screens: {
       "2xl": { max: "1535px" },
       // => @media (max-width: 1535px) { ... }
@@ -45,23 +46,5 @@ export default {
       // => @media (max-width: 479px) { ... }
     },
   },
-  plugins: [
-    // plugin for scrollbar hiding
-    function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
-      const newUtilities = {
-        ".scrollbar-hide": {
-          /* Firefox */
-          "scrollbar-width": "none",
-          /* IE and Edge */
-          "-ms-overflow-style": "none",
-          /* WebKit */
-          "&::-webkit-scrollbar": {
-            display: "none",
-            width: "0",
-            height: "0",
-          },
-        },
-      };
-      addUtilities(newUtilities);
-    },  ],
+  plugins: [require("tailwind-scrollbar")],
 } satisfies Config;

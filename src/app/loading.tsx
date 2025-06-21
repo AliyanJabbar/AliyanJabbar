@@ -1,20 +1,16 @@
 import React from "react";
+import styles from "../components/moduleCSS/loading.module.css"
 
-const PortfolioLoader = () => {
+const Loader = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-transparent overflow-hidden">
-      <div className="flex flex-col items-center max-w-md px-4">
-        <div className="relative mb-12">
-          <div className="h-24 w-24 rounded-full border-t-4 border-b-4 border-primary animate-spin"></div>
-          <div className="absolute top-0 left-0 h-24 w-24 rounded-full border-r-4 border-l-4 border-primaryDark animate-pulse opacity-70"></div>
-        </div>
-
-        <h2 className="mt-4 text-lg text-gray-500 dark:text-gray-400 text-center">
-          Preparing something amazing for you
-        </h2>
+    <div className="z-50 fixed top-0 left-0 dark:bg-dark bg-light w-full min-h-screen flex items-center justify-center">
+      <div className={`${styles.loader} text-4xl font-extrabold`}>
+        <span className="dark:text-light text-dark">&lt;</span>
+        <span className="dark:text-light text-dark">LOADING</span>
+        <span className="dark:text-light text-dark">/&gt;</span>
       </div>
     </div>
   );
 };
 
-export default PortfolioLoader;
+export default Loader;

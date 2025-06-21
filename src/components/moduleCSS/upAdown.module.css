@@ -1,0 +1,21 @@
+@keyframes upAdown {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  70% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.upAdown {
+  animation: upAdown 1s ease-in forwards;
+}
