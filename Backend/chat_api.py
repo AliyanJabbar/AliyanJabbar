@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from mangum import Mangum
 from pydantic import BaseModel
 from openai import AsyncOpenAI
 from agents import Agent, OpenAIChatCompletionsModel, Runner, set_tracing_disabled
@@ -107,7 +106,3 @@ async def chat(request: ChatRequest):
 @app.get("/")
 async def health():
     return {"response": "all set" if gemini_api_key else ""}
-
-
-# vercel handler adapter (mangum)
-handler = Mangum(app)
