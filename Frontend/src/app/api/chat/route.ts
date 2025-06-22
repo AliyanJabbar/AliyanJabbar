@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error in chat API:", error);
     return NextResponse.json({
-      response: "Sorry, there was an error processing your request.",
+      response: "Sorry, there was an error processing your request. Try later",
     });
   }
 }
