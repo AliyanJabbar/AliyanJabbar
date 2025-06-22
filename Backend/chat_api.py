@@ -105,4 +105,9 @@ async def chat(request: ChatRequest):
 
 @app.get("/")
 async def health():
-    return {"response": "all set" if gemini_api_key else ""}
+    return {
+        "status": "healthy",
+        "response": "api set" if gemini_api_key else "API key missing",
+        "gemini_api_key_set": bool(gemini_api_key),
+        "web_url": os.getenv("WEB_URL", "not set"),
+    }

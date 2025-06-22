@@ -256,7 +256,7 @@ export default function AIAssistantWidget() {
                     ))}
                     {isLoading && (
                       <div className="flex justify-start">
-                        <div className="bg-grayish text-white px-4 py-2 rounded-lg text-sm">
+                        <div className="dark:bg-grayish bg-gray-300 dark:text-light text-dark rounded-tl-none px-4 py-2 rounded-2xl text-sm">
                           Typing...
                         </div>
                       </div>
@@ -270,7 +270,7 @@ export default function AIAssistantWidget() {
             {/* Input */}
             <div className="flex gap-2 py-4 px-6 relaive w-full">
               <input
-                className="relative flex-1 px-4 py-4 w-full text-sm border dark:bg-grayish bg-gray-300 dark:border-grayish border-lightGray outline-none dark:focus:border-lightGray focus:border-grayish text-white placeholder:select-none dark:placeholder:text-lightGray placeholder:text-grayish rounded-full"
+                className="relative flex-1 px-4 py-4 w-full text-sm border dark:bg-grayish bg-gray-300 dark:border-grayish border-lightGray outline-none dark:focus:border-lightGray focus:border-grayish dark:text-light text-dark placeholder:select-none dark:placeholder:text-lightGray placeholder:text-grayish rounded-full"
                 placeholder="Ask me anything..."
                 value={input}
                 onChange={(e) => setInput(sanitizeInput(e.target.value))}
