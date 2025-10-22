@@ -4,7 +4,7 @@
 
 
 <!---------------------------- About Me ----------------------------->
-<img align="right" alt="GIF" src="https://raw.githubusercontent.com/DevrajDC/DevrajDC/main/developer.gif" height="250" width="375" />
+<img align="right" alt="GIF" src="./developer.gif" height="250" width="375" />
 
 - 🔭 Currently crafting my Portfolio with passion and precision.
 - 👯 Building [My Network](https://www.linkedin.com/in/aliyan-jabbar) with Linkedin Community.
@@ -20,7 +20,6 @@
 <!---------------------------- My Skills Section ----------------------------->
 ## 💻 Tech Backpack
 
-<!-- <img src="https://skillicons.dev/icons?i=html,css,js,react,angular,ts,nextjs,nodejs,expressjs,tailwind,threejs,materialui,bootstrap,redux,figma,mongodb,appwrite,postgres,mysql,docker,cypress,firebase,git,github,gitlab,postman,vscode,eclipse,vercel,netlify,jenkins" align="center"> -->
 [![My Skills](https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,tailwindcss,materialui,bootstrap,redux,threejs,figma,vite,python,fastapi,mongodb,postgres,firebase,git,github,postman,vscode,vercel,netlify,docker,kubernetes,aws,linux,windows,npm)](https://skillicons.dev)
 <br>
 <br>
@@ -62,4 +61,4 @@
 
 
 <!---------------------------------  Marquee Animation  ------------------------>
-<img height="100" alt="Thanks for visiting me" width="100%" src="https://raw.githubusercontent.com/BrunnerLivio/brunnerlivio/master/images/marquee.svg" />
+<img height="100" alt="Thanks for visiting me" width="100%" src="./marquee.svg" />
