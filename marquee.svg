@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="50">
-  <text x="100%" y="50%" dominant-baseline="middle" text-anchor="start" fill="dodgerblue" font-size="19" font-family="Comic Sans MS, cursive">
+  <text x="100%" y="50%" dominant-baseline="middle" text-anchor="start" fill="dodgerblue" font-size="20" font-family="Comic Sans MS, cursive">
     Thanks for visiting my profile, see you next time!
     <animateTransform attributeName="transform" type="translate" from="0 0" to="-1300 0" dur="15s" repeatCount="indefinite"></animateTransform>
   </text>
