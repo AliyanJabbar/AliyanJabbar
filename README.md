@@ -45,16 +45,16 @@
 ## 🤝🏻 Connect with Me
 
 <p align="left">
-<a href="mailto:jabbaraliyan805@gmail.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+<a href="mailto:jabbaraliyan805@gmail.com" style="text-decoration:none">
   <img height="30" src = "https://img.shields.io/badge/gmail-c14438?&style=for-the-badge&logo=gmail&logoColor=white">
 </a>
-<a href="https://www.linkedin.com/in/aliyan-jabbar" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+<a href="https://www.linkedin.com/in/aliyan-jabbar" style="text-decoration:none">
   <img height="30" src="https://img.shields.io/badge/linkedin-blue.svg?&style=for-the-badge&logo=LinkedIn&logoColor=white" />
 </a>
-<a href="https://x.com/aliyanjabbar_ai" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+<a href="https://x.com/aliyanjabbar_ai" style="text-decoration:none">
   <img height="30" src ="https://img.shields.io/badge/twitter-black.svg?&style=for-the-badge&logo=x&logoColor=white">
 </a>
-<a href="https://discord.com/users/1209465617053122560" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+<a href="https://discord.com/users/1209465617053122560" style="text-decoration:none">
   <img height="30" src="https://img.shields.io/badge/discord-darkblue.svg?&style=for-the-badge&logo=discord&logoColor=white" />
 </a>
 </p>
