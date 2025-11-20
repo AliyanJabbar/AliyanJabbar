@@ -10,7 +10,7 @@
 - 👯 Building [My Network](https://www.linkedin.com/in/aliyan-jabbar) with Linkedin Community.
 - 👨‍💻 Explore my diverse projects at [My Portfolio](https://aliyan-jabbar-portfolio.vercel.app).
 - 💬 Ask me about **Web Development, AI Agents, AI Chatbots.**
-- 📫 Reach out to me at: <a href="mailto:jabbaraliyan805@gmail.com">jabbaraliyan805@gmail.com</a>
+- 📫 Reach out to me at: <a href="mailto:aliyanjabbardev@gmail.com">aliyanjabbardev@gmail.com</a>
 - 📄 Dive into my experiences with my [Resume](https://aliyan-jabbar-portfolio.vercel.app/assets/AliyanJabbarResume.pdf)
 - ⚡ Fun fact: Apart from coding, I'm also a big **Cricket Lover**!
 <br>
