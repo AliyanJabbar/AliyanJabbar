@@ -32,15 +32,6 @@
 <br>
 
 
-## 🔝 Top Contributed Repo
-![](https://github-contributor-stats.vercel.app/api?username=AliyanJabbar&limit=5&theme=github_dark&combine_all_yearly_contributions=true)
-
-<p align="left">
-  <a href="https://github.com/AliyanJabbar?tab=repositories"><img alt="All Repositories" title="All Repositories" src="https://custom-icon-badges.herokuapp.com/badge/-All%20Repos-2962FF?style=for-the-badge&logoColor=white&logo=repo"/></a>
-</p>
-<br>
-
-
 <!--------------------------------- Social Links --------------------------------->
 ## 🤝🏻 Connect with Me
 
